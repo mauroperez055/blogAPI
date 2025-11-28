@@ -70,10 +70,22 @@ app.delete('/api/blogs/:id', (req, res) => {
 })
 
 /* Actualizo un blog por su id */
+//no funcionar todavia
 app.put('/api/blogs/:id', (req, ress) => {
     const blogId = req.params.id;
-    console.log(`Received request to update /api/blogs/${blogId}`);
-    ress.status(200).json({ message: `Blog with id ${blogId} updated` });
+    const { titulo, autor, contenido, tags } = req.body;
+    console.log(`Received request for /api/blos/${blogId}`);
+
+    const blog = blogs.find(b => b.id === blogId);
+    if (blog) {
+        blog.titulo = titulo || blog.titulo;
+        blog.autor = autor || blog.autor;
+        blog.contenido = contenido || blog.contenido;
+        blog.tags = tags || blog.tags;
+    } else {
+        return res.status(404).json({ message: 'Blog not found' });
+    }
+
 })
 
 
