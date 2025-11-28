@@ -1,0 +1,9 @@
+POST http://localhost:3000/api/blogs
+Content-Type: application/json
+
+// la propiedad tambien va entre comillas
+{
+    "titulo": "Nuevo blog de prueba",
+    "contenido": "Este es el contenido del blog de prueba.",
+    "autor": "Autor Anónimo"
+}
